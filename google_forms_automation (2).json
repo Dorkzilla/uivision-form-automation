@@ -1,0 +1,481 @@
+{
+  "Name": "GoogleFormsAutomation",
+  "CreationDate": "2025-7-6",
+  "Commands": [
+    {
+      "Command": "comment",
+      "Target": "=== Google Forms Automation Macro ===",
+      "Value": "Automates 200 survey responses using CSV data"
+    },
+    {
+      "Command": "store",
+      "Target": "0",
+      "Value": "!csvReadLineNumber"
+    },
+    {
+      "Command": "store",
+      "Target": "200",
+      "Value": "totalRows"
+    },
+    {
+      "Command": "store",
+      "Target": "occupations_locations.csv",
+      "Value": "csvFileName"
+    },
+    {
+      "Command": "comment",
+      "Target": "=== Main Loop for Processing 200 Rows ===",
+      "Value": ""
+    },
+    {
+      "Command": "label",
+      "Target": "MAIN_LOOP",
+      "Value": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "Processing row ${!csvReadLineNumber}",
+      "Value": ""
+    },
+    {
+      "Command": "csvRead",
+      "Target": "${csvFileName}",
+      "Value": "!csvReadLineNumber"
+    },
+    {
+      "Command": "comment",
+      "Target": "=== Store CSV Data in Variables ===",
+      "Value": "Assuming 26 columns based on your description"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col1}",
+      "Value": "consent"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col2}",
+      "Value": "age"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col3}",
+      "Value": "gender"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col4}",
+      "Value": "income"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col5}",
+      "Value": "occupation"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col6}",
+      "Value": "location"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col7}",
+      "Value": "cultural_q1"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col8}",
+      "Value": "cultural_q2"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col9}",
+      "Value": "cultural_q3"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col10}",
+      "Value": "cultural_q4"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col11}",
+      "Value": "cultural_q5"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col12}",
+      "Value": "cultural_q6"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col13}",
+      "Value": "auth_q1"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col14}",
+      "Value": "auth_q2"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col15}",
+      "Value": "auth_q3"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col16}",
+      "Value": "auth_q4"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col17}",
+      "Value": "auth_q5"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col18}",
+      "Value": "auth_q6"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col19}",
+      "Value": "loyalty_q1"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col20}",
+      "Value": "loyalty_q2"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col21}",
+      "Value": "loyalty_q3"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col22}",
+      "Value": "loyalty_q4"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col23}",
+      "Value": "loyalty_q5"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col24}",
+      "Value": "loyalty_q6"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col25}",
+      "Value": "subculture_q1"
+    },
+    {
+      "Command": "store",
+      "Target": "${!col26}",
+      "Value": "subculture_q2"
+    },
+    {
+      "Command": "comment",
+      "Target": "=== PAGE 1: Consent ===",
+      "Value": ""
+    },
+    {
+      "Command": "waitForElementVisible",
+      "Target": "xpath=//div[@role='radio' or @role='radiogroup']",
+      "Value": "10"
+    },
+    {
+      "Command": "gotoIf_v2",
+      "Target": "${consent} == 'Yes'",
+      "Value": "CONSENT_YES"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//div[@role='radio']//span[contains(text(),'No')]",
+      "Value": ""
+    },
+    {
+      "Command": "goto",
+      "Target": "CONSENT_NEXT",
+      "Value": ""
+    },
+    {
+      "Command": "label",
+      "Target": "CONSENT_YES",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//div[@role='radio']//span[contains(text(),'Yes')]",
+      "Value": ""
+    },
+    {
+      "Command": "label",
+      "Target": "CONSENT_NEXT",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//span[contains(text(),'Next')]",
+      "Value": ""
+    },
+    {
+      "Command": "waitForElementVisible",
+      "Target": "xpath=//input[@type='text' or @type='email']",
+      "Value": "5"
+    },
+    {
+      "Command": "comment",
+      "Target": "=== PAGE 2: Demographics ===",
+      "Value": ""
+    },
+    {
+      "Command": "type",
+      "Target": "xpath=(//input[@type='text'])[1]",
+      "Value": "${age}"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//div[@role='radio']//span[contains(text(),'${gender}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//div[@role='radio']//span[contains(text(),'${income}')]",
+      "Value": ""
+    },
+    {
+      "Command": "type",
+      "Target": "xpath=(//input[@type='text'])[2]",
+      "Value": "${occupation}"
+    },
+    {
+      "Command": "type",
+      "Target": "xpath=(//input[@type='text'])[3]",
+      "Value": "${location}"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//span[contains(text(),'Next')]",
+      "Value": ""
+    },
+    {
+      "Command": "waitForElementVisible",
+      "Target": "xpath=//div[@role='radio' or @role='radiogroup']",
+      "Value": "5"
+    },
+    {
+      "Command": "comment",
+      "Target": "=== PAGE 3: Cultural Preferences ===",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[1]//span[contains(text(),'${cultural_q1}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[2]//span[contains(text(),'${cultural_q2}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[3]//span[contains(text(),'${cultural_q3}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[4]//span[contains(text(),'${cultural_q4}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[5]//span[contains(text(),'${cultural_q5}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[6]//span[contains(text(),'${cultural_q6}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//span[contains(text(),'Next')]",
+      "Value": ""
+    },
+    {
+      "Command": "waitForElementVisible",
+      "Target": "xpath=//div[@role='radio' or @role='radiogroup']",
+      "Value": "5"
+    },
+    {
+      "Command": "comment",
+      "Target": "=== PAGE 4: Authenticity Questions ===",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[1]//span[contains(text(),'${auth_q1}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[2]//span[contains(text(),'${auth_q2}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[3]//span[contains(text(),'${auth_q3}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[4]//span[contains(text(),'${auth_q4}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[5]//span[contains(text(),'${auth_q5}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[6]//span[contains(text(),'${auth_q6}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//span[contains(text(),'Next')]",
+      "Value": ""
+    },
+    {
+      "Command": "waitForElementVisible",
+      "Target": "xpath=//div[@role='radio' or @role='radiogroup']",
+      "Value": "5"
+    },
+    {
+      "Command": "comment",
+      "Target": "=== PAGE 5: Loyalty Questions ===",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[1]//span[contains(text(),'${loyalty_q1}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[2]//span[contains(text(),'${loyalty_q2}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[3]//span[contains(text(),'${loyalty_q3}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[4]//span[contains(text(),'${loyalty_q4}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[5]//span[contains(text(),'${loyalty_q5}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[6]//span[contains(text(),'${loyalty_q6}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//span[contains(text(),'Next')]",
+      "Value": ""
+    },
+    {
+      "Command": "waitForElementVisible",
+      "Target": "xpath=//div[@role='radio' or @role='radiogroup']",
+      "Value": "5"
+    },
+    {
+      "Command": "comment",
+      "Target": "=== PAGE 6: Final Questions ===",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[1]//span[contains(text(),'${subculture_q1}')]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=(//div[@role='radiogroup'])[2]//span[contains(text(),'${subculture_q2}')]",
+      "Value": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "=== Submit Form ===",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//span[contains(text(),'Submit')]",
+      "Value": ""
+    },
+    {
+      "Command": "waitForElementVisible",
+      "Target": "xpath=//a[contains(text(),'Submit another response')]",
+      "Value": "10"
+    },
+    {
+      "Command": "comment",
+      "Target": "=== Increment Counter and Check Loop ===",
+      "Value": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Number(${!csvReadLineNumber}) + 1",
+      "Value": "!csvReadLineNumber"
+    },
+    {
+      "Command": "echo",
+      "Target": "Completed row ${!csvReadLineNumber}. Total rows: ${totalRows}",
+      "Value": ""
+    },
+    {
+      "Command": "gotoIf_v2",
+      "Target": "${!csvReadLineNumber} >= ${totalRows}",
+      "Value": "END_MACRO"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//a[contains(text(),'Submit another response')]",
+      "Value": ""
+    },
+    {
+      "Command": "waitForElementVisible",
+      "Target": "xpath=//div[@role='radio' or @role='radiogroup']",
+      "Value": "10"
+    },
+    {
+      "Command": "goto",
+      "Target": "MAIN_LOOP",
+      "Value": ""
+    },
+    {
+      "Command": "label",
+      "Target": "END_MACRO",
+      "Value": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "Macro completed! Processed ${!csvReadLineNumber} rows successfully.",
+      "Value": ""
+    }
+  ]
+}
